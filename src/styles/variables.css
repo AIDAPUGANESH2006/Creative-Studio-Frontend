@@ -1,0 +1,49 @@
+:root {
+  /* Color Palette - Restrained Luxury Palette */
+  --bg-primary: #080808;
+  --bg-secondary: #0F0F10;
+  --bg-tertiary: #161618;
+  --bg-card: #111113;
+  --bg-elevated: #1B1B1E;
+  
+  --text-primary: #F8F8F6;
+  --text-secondary: #A6A6A0;
+  --text-muted: #666660;
+  --text-inverse: #080808;
+  
+  --accent-primary: #FF3E18;
+  --accent-glow: rgba(255, 62, 24, 0.25);
+  --accent-soft: rgba(255, 62, 24, 0.12);
+  --accent-hover: #FF5A36;
+  
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-medium: rgba(255, 255, 255, 0.15);
+  --border-strong: rgba(255, 255, 255, 0.3);
+  --border-accent: rgba(255, 62, 24, 0.4);
+
+  /* Glass & Blur */
+  --glass-bg: rgba(12, 12, 14, 0.75);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-blur: blur(16px);
+  
+  /* Layout & Spacing */
+  --container-max: 1560px;
+  --container-pad: clamp(1.25rem, 4vw, 4rem);
+  --section-pad-y: clamp(5rem, 12vw, 12rem);
+  --grid-gap: clamp(1.5rem, 3vw, 3rem);
+  
+  /* Transitions */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out-circ: cubic-bezier(0.85, 0, 0.15, 1);
+  --transition-fast: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-base: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-slow: 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  
+  /* Z-Index Hierarchy */
+  --z-canvas: 1;
+  --z-content: 10;
+  --z-header: 100;
+  --z-modal: 200;
+  --z-cursor: 999;
+  --z-loader: 1000;
+}
