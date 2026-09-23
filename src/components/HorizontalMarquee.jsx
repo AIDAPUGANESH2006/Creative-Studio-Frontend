@@ -46,7 +46,7 @@ export const HorizontalMarquee = () => {
       style={{
         position: 'relative',
         width: '100%',
-        padding: 'clamp(2.5rem, 5vw, 4.5rem) 0',
+        padding: 'clamp(1.75rem, 3.5vw, 3rem) 0',
         backgroundColor: '#0C0C0E',
         borderTop: '1px solid var(--border-subtle)',
         borderBottom: '1px solid var(--border-subtle)',
@@ -60,7 +60,7 @@ export const HorizontalMarquee = () => {
         style={{
           display: 'flex',
           alignItems: 'center',
-          gap: 'clamp(2rem, 4vw, 4rem)',
+          gap: 'clamp(1.5rem, 3vw, 3rem)',
           whiteSpace: 'nowrap',
           width: 'max-content',
           willChange: 'transform',
@@ -73,13 +73,13 @@ export const HorizontalMarquee = () => {
             style={{
               display: 'flex',
               alignItems: 'center',
-              gap: 'clamp(2rem, 4vw, 4rem)',
+              gap: 'clamp(1.5rem, 3vw, 3rem)',
             }}
           >
             <span
               style={{
                 fontFamily: 'var(--font-display)',
-                fontSize: 'clamp(2.5rem, 6vw, 6rem)',
+                fontSize: 'clamp(1.5rem, 3.2vw, 3.2rem)',
                 fontWeight: 800,
                 textTransform: 'uppercase',
                 letterSpacing: '-0.02em',
@@ -91,8 +91,8 @@ export const HorizontalMarquee = () => {
             </span>
             <span
               style={{
-                width: '12px',
-                height: '12px',
+                width: '8px',
+                height: '8px',
                 borderRadius: '50%',
                 backgroundColor: 'var(--accent-primary)',
                 display: 'inline-block',

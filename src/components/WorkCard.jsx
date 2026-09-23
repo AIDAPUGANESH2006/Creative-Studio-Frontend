@@ -11,21 +11,24 @@ export const WorkCard = ({ project, index }) => {
   const imageRef = useRef(null);
   const infoRef = useRef(null);
   const titleRef = useRef(null);
+  const arrowRef = useRef(null);
 
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (prefersReducedMotion) return;
 
     const ctx = gsap.context(() => {
-      // Premium Image Reveal Animation on Scroll (clip-path reveal + scale settling)
+      // 1. Image reveal: clip-path inset(0 100% 0 0) -> inset(0 0 0 0) + scale 1.1 -> 1.0 + opacity 0 -> 1
       gsap.fromTo(
         imageWrapperRef.current,
         {
           clipPath: 'inset(0% 100% 0% 0%)',
+          opacity: 0,
         },
         {
           clipPath: 'inset(0% 0% 0% 0%)',
-          duration: 1.2,
+          opacity: 1,
+          duration: 1.1,
           ease: 'power4.inOut',
           scrollTrigger: {
             trigger: cardRef.current,
@@ -38,11 +41,11 @@ export const WorkCard = ({ project, index }) => {
       gsap.fromTo(
         imageRef.current,
         {
-          scale: 1.15,
+          scale: 1.12,
         },
         {
           scale: 1,
-          duration: 1.4,
+          duration: 1.3,
           ease: 'power3.out',
           scrollTrigger: {
             trigger: cardRef.current,
@@ -51,17 +54,17 @@ export const WorkCard = ({ project, index }) => {
         }
       );
 
-      // Card Information entrance
+      // 2. Metadata Information Entrance
       gsap.fromTo(
         infoRef.current,
         {
           opacity: 0,
-          y: 25,
+          y: 20,
         },
         {
           opacity: 1,
           y: 0,
-          duration: 0.8,
+          duration: 0.7,
           ease: 'power3.out',
           scrollTrigger: {
             trigger: cardRef.current,
@@ -74,7 +77,7 @@ export const WorkCard = ({ project, index }) => {
     return () => ctx.revert();
   }, []);
 
-  // High performance pointer-based 3D tilt & parallax
+  // High performance pointer parallax
   const handleMouseMove = (e) => {
     if (window.matchMedia('(hover: none) and (pointer: coarse)').matches) return;
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -84,18 +87,27 @@ export const WorkCard = ({ project, index }) => {
     const y = e.clientY - (rect.top + rect.height / 2);
 
     gsap.to(imageRef.current, {
-      x: x * 0.04,
-      y: y * 0.04,
-      scale: 1.06,
+      x: x * 0.035,
+      y: y * 0.035,
+      scale: 1.05,
       duration: 0.5,
       ease: 'power2.out',
     });
 
     gsap.to(titleRef.current, {
-      x: x * 0.02,
+      x: x * 0.015,
       duration: 0.4,
       ease: 'power2.out',
     });
+
+    if (arrowRef.current) {
+      gsap.to(arrowRef.current, {
+        x: x * 0.05,
+        y: y * 0.05,
+        duration: 0.4,
+        ease: 'power2.out',
+      });
+    }
   };
 
   const handleMouseLeave = () => {
@@ -114,6 +126,15 @@ export const WorkCard = ({ project, index }) => {
       duration: 0.5,
       ease: 'power3.out',
     });
+
+    if (arrowRef.current) {
+      gsap.to(arrowRef.current, {
+        x: 0,
+        y: 0,
+        duration: 0.5,
+        ease: 'power2.out',
+      });
+    }
   };
 
   return (
@@ -126,7 +147,7 @@ export const WorkCard = ({ project, index }) => {
         position: 'relative',
         display: 'flex',
         flexDirection: 'column',
-        marginBottom: 'clamp(2rem, 5vw, 4rem)',
+        marginBottom: 'clamp(2rem, 4vw, 3.5rem)',
         cursor: 'pointer',
       }}
       aria-label={`${project.title} - ${project.category}`}
@@ -137,38 +158,37 @@ export const WorkCard = ({ project, index }) => {
         style={{
           position: 'relative',
           width: '100%',
-          borderRadius: '16px',
+          borderRadius: '14px',
           overflow: 'hidden',
-          backgroundColor: '#141416',
+          backgroundColor: '#111114',
           aspectRatio: project.aspectRatio === '16/9' ? '16 / 9' : '4 / 3',
         }}
       >
         <img
           ref={imageRef}
           src={project.image}
-          alt={`${project.title} project showcase`}
+          alt={`${project.title} project visual`}
           loading="lazy"
           style={{
             width: '100%',
             height: '100%',
             objectFit: 'cover',
             display: 'block',
-            transition: 'filter 0.4s ease',
             willChange: 'transform',
           }}
         />
 
-        {/* Subtle Gradient Shade & Accent Tag */}
+        {/* Ambient Bottom Gradient */}
         <div
           style={{
             position: 'absolute',
             inset: 0,
-            background: 'linear-gradient(to top, rgba(8,8,8,0.7) 0%, rgba(8,8,8,0) 40%)',
+            background: 'linear-gradient(to top, rgba(8,8,8,0.65) 0%, rgba(8,8,8,0) 40%)',
             pointerEvents: 'none',
           }}
         />
 
-        {/* Floating Top Badge */}
+        {/* Floating Top Bar */}
         <div
           style={{
             position: 'absolute',
@@ -189,7 +209,7 @@ export const WorkCard = ({ project, index }) => {
               backdropFilter: 'blur(10px)',
               border: '1px solid rgba(255, 255, 255, 0.1)',
               fontFamily: 'var(--font-mono)',
-              fontSize: '0.75rem',
+              fontSize: '0.72rem',
               color: '#F8F8F6',
               letterSpacing: '0.05em',
             }}
@@ -198,6 +218,7 @@ export const WorkCard = ({ project, index }) => {
           </div>
 
           <div
+            ref={arrowRef}
             style={{
               width: 36,
               height: 36,
@@ -209,6 +230,7 @@ export const WorkCard = ({ project, index }) => {
               alignItems: 'center',
               justifyContent: 'center',
               color: '#F8F8F6',
+              transition: 'background-color 0.25s ease, border-color 0.25s ease',
             }}
           >
             <ArrowUpRight size={16} />
@@ -217,13 +239,13 @@ export const WorkCard = ({ project, index }) => {
       </div>
 
       {/* Metadata & Description */}
-      <div ref={infoRef} style={{ marginTop: '1.5rem' }}>
-        <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
+      <div ref={infoRef} style={{ marginTop: '1.25rem' }}>
+        <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', marginBottom: '0.4rem' }}>
           <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.75rem' }}>
             <span
               style={{
                 fontFamily: 'var(--font-mono)',
-                fontSize: '0.85rem',
+                fontSize: '0.82rem',
                 color: 'var(--accent-primary)',
                 fontWeight: 700,
               }}
@@ -234,7 +256,7 @@ export const WorkCard = ({ project, index }) => {
               ref={titleRef}
               style={{
                 fontFamily: 'var(--font-display)',
-                fontSize: 'clamp(1.5rem, 2.5vw, 2.25rem)',
+                fontSize: 'clamp(1.4rem, 2.2vw, 2rem)',
                 fontWeight: 800,
                 letterSpacing: '-0.02em',
                 color: '#F8F8F6',
@@ -248,7 +270,7 @@ export const WorkCard = ({ project, index }) => {
           <span
             style={{
               fontFamily: 'var(--font-mono)',
-              fontSize: '0.8rem',
+              fontSize: '0.78rem',
               color: 'var(--text-muted)',
             }}
           >
@@ -259,18 +281,18 @@ export const WorkCard = ({ project, index }) => {
         <p
           style={{
             fontFamily: 'var(--font-body)',
-            fontSize: '0.95rem',
+            fontSize: '0.92rem',
             color: 'var(--text-secondary)',
             lineHeight: 1.55,
-            marginBottom: '0.85rem',
-            maxWidth: '650px',
+            marginBottom: '0.75rem',
+            maxWidth: '620px',
           }}
         >
           {project.description}
         </p>
 
         {/* Tags */}
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem' }}>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.35rem' }}>
           {project.tags.map((tag) => (
             <span
               key={tag}
@@ -278,7 +300,7 @@ export const WorkCard = ({ project, index }) => {
                 fontFamily: 'var(--font-mono)',
                 fontSize: '0.68rem',
                 letterSpacing: '0.04em',
-                padding: '0.2rem 0.6rem',
+                padding: '0.2rem 0.55rem',
                 borderRadius: '4px',
                 backgroundColor: 'rgba(255, 255, 255, 0.04)',
                 color: 'var(--text-muted)',

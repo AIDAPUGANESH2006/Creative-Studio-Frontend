@@ -23,7 +23,7 @@ export const Intro = () => {
         wordsRef.current,
         {
           opacity: 0.15,
-          y: 15,
+          y: 10,
         },
         {
           opacity: 1,
@@ -33,8 +33,8 @@ export const Intro = () => {
           scrollTrigger: {
             trigger: containerRef.current,
             start: 'top 75%',
-            end: 'center 40%',
-            scrub: 0.8,
+            end: 'center 45%',
+            scrub: 0.7,
           },
         }
       );
@@ -42,12 +42,12 @@ export const Intro = () => {
       // Stats reveal
       gsap.fromTo(
         statsRef.current,
-        { opacity: 0, y: 30 },
+        { opacity: 0, y: 25 },
         {
           opacity: 1,
           y: 0,
-          duration: 0.8,
-          stagger: 0.12,
+          duration: 0.7,
+          stagger: 0.1,
           ease: 'power3.out',
           scrollTrigger: {
             trigger: containerRef.current,
@@ -81,18 +81,17 @@ export const Intro = () => {
     >
       <div className="container">
         {/* Section Header */}
-        <div style={{ marginBottom: 'clamp(2.5rem, 5vw, 4.5rem)' }}>
+        <div style={{ marginBottom: 'clamp(2rem, 4vw, 3.5rem)' }}>
           <div className="eyebrow-badge">
             <span>01 // THE MANIFESTO & PHILOSOPHY</span>
           </div>
         </div>
 
         {/* Large Editorial Kinetic Typography Statement */}
-        <div style={{ maxWidth: '1280px', marginBottom: 'clamp(4rem, 8vw, 7rem)' }}>
+        <div style={{ maxWidth: '1050px', marginBottom: 'clamp(3rem, 6vw, 5.5rem)' }}>
           <p
-            className="display-manifesto"
+            className="display-intro"
             style={{
-              lineHeight: 1.15,
               color: 'var(--text-primary)',
             }}
           >
@@ -104,8 +103,8 @@ export const Intro = () => {
                   ref={(el) => (wordsRef.current[index] = el)}
                   style={{
                     display: 'inline-block',
-                    marginRight: '0.3em',
-                    color: isHighlight ? '#F8F8F6' : '#A6A6A0',
+                    marginRight: '0.28em',
+                    color: isHighlight ? '#F8F8F6' : '#95958F',
                     transition: 'color 0.3s ease',
                   }}
                 >
@@ -130,11 +129,11 @@ export const Intro = () => {
             <h3
               style={{
                 fontFamily: 'var(--font-mono)',
-                fontSize: '0.85rem',
+                fontSize: '0.82rem',
                 textTransform: 'uppercase',
-                letterSpacing: '0.15em',
+                letterSpacing: '0.14em',
                 color: 'var(--accent-primary)',
-                marginBottom: '1.25rem',
+                marginBottom: '1rem',
               }}
             >
               CRAFT OVER CONFORMITY
@@ -142,10 +141,10 @@ export const Intro = () => {
             <p
               className="body-regular"
               style={{
-                fontSize: 'clamp(1rem, 1.1vw, 1.25rem)',
-                lineHeight: 1.7,
+                fontSize: 'clamp(0.95rem, 1vw, 1.15rem)',
+                lineHeight: 1.65,
                 color: 'var(--text-secondary)',
-                marginBottom: '1.5rem',
+                marginBottom: '1.25rem',
               }}
             >
               In an era overflowing with homogenized digital templates and disposable attention, we practice radical visual intentionality. Every interaction is calculated, every millisecond of motion is purposeful, and every typographic weight is calibrated to elevate human emotion.
@@ -153,8 +152,8 @@ export const Intro = () => {
             <p
               className="body-regular"
               style={{
-                fontSize: 'clamp(0.9rem, 0.95vw, 1.05rem)',
-                lineHeight: 1.65,
+                fontSize: 'clamp(0.85rem, 0.9vw, 0.98rem)',
+                lineHeight: 1.6,
                 color: 'var(--text-muted)',
               }}
             >
@@ -167,8 +166,8 @@ export const Intro = () => {
             <div
               style={{
                 display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-                gap: '1.5rem',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(190px, 1fr))',
+                gap: '1.25rem',
               }}
             >
               {stats.map((stat, idx) => {
@@ -178,26 +177,26 @@ export const Intro = () => {
                     key={stat.label}
                     ref={(el) => (statsRef.current[idx] = el)}
                     style={{
-                      padding: '1.75rem 1.5rem',
-                      borderRadius: '16px',
+                      padding: '1.5rem 1.35rem',
+                      borderRadius: '14px',
                       backgroundColor: 'rgba(255, 255, 255, 0.02)',
                       border: '1px solid var(--border-subtle)',
                       transition: 'border-color 0.3s ease, transform 0.3s ease',
                     }}
                     onMouseEnter={(e) => {
                       e.currentTarget.style.borderColor = 'rgba(255, 62, 24, 0.3)';
-                      e.currentTarget.style.transform = 'translateY(-4px)';
+                      e.currentTarget.style.transform = 'translateY(-3px)';
                     }}
                     onMouseLeave={(e) => {
                       e.currentTarget.style.borderColor = 'var(--border-subtle)';
                       e.currentTarget.style.transform = 'translateY(0)';
                     }}
                   >
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.25rem' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
                       <span
                         style={{
                           fontFamily: 'var(--font-display)',
-                          fontSize: 'clamp(2rem, 3vw, 2.75rem)',
+                          fontSize: 'clamp(1.75rem, 2.5vw, 2.3rem)',
                           fontWeight: 800,
                           color: '#F8F8F6',
                           lineHeight: 1,
@@ -207,8 +206,8 @@ export const Intro = () => {
                       </span>
                       <div
                         style={{
-                          width: 36,
-                          height: 36,
+                          width: 32,
+                          height: 32,
                           borderRadius: '50%',
                           backgroundColor: 'rgba(255, 62, 24, 0.1)',
                           display: 'flex',
@@ -217,22 +216,22 @@ export const Intro = () => {
                           color: 'var(--accent-primary)',
                         }}
                       >
-                        <IconComponent size={18} />
+                        <IconComponent size={16} />
                       </div>
                     </div>
                     <p
                       style={{
                         fontFamily: 'var(--font-mono)',
-                        fontSize: '0.78rem',
+                        fontSize: '0.75rem',
                         textTransform: 'uppercase',
                         letterSpacing: '0.08em',
                         color: 'var(--text-primary)',
-                        marginBottom: '0.35rem',
+                        marginBottom: '0.25rem',
                       }}
                     >
                       {stat.label}
                     </p>
-                    <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.82rem', color: 'var(--text-muted)' }}>
+                    <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.78rem', color: 'var(--text-muted)' }}>
                       {stat.detail}
                     </p>
                   </div>

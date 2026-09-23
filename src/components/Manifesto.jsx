@@ -18,7 +18,7 @@ export const Manifesto = () => {
     const ctx = gsap.context(() => {
       // Differential multi-speed parallax lines
       gsap.to(line1Ref.current, {
-        xPercent: -8,
+        xPercent: -6,
         ease: 'none',
         scrollTrigger: {
           trigger: containerRef.current,
@@ -29,7 +29,7 @@ export const Manifesto = () => {
       });
 
       gsap.to(line2Ref.current, {
-        xPercent: 10,
+        xPercent: 7,
         ease: 'none',
         scrollTrigger: {
           trigger: containerRef.current,
@@ -40,7 +40,7 @@ export const Manifesto = () => {
       });
 
       gsap.to(line3Ref.current, {
-        xPercent: -12,
+        xPercent: -8,
         ease: 'none',
         scrollTrigger: {
           trigger: containerRef.current,
@@ -51,7 +51,7 @@ export const Manifesto = () => {
       });
 
       gsap.to(line4Ref.current, {
-        xPercent: 6,
+        xPercent: 5,
         ease: 'none',
         scrollTrigger: {
           trigger: containerRef.current,
@@ -76,8 +76,8 @@ export const Manifesto = () => {
         borderTop: '1px solid var(--border-subtle)',
         borderBottom: '1px solid var(--border-subtle)',
         overflow: 'hidden',
-        paddingTop: 'clamp(6rem, 15vw, 14rem)',
-        paddingBottom: 'clamp(6rem, 15vw, 14rem)',
+        paddingTop: 'clamp(4.5rem, 8vw, 8rem)',
+        paddingBottom: 'clamp(4.5rem, 8vw, 8rem)',
       }}
       aria-label="Studio Manifesto"
     >
@@ -88,24 +88,24 @@ export const Manifesto = () => {
           top: '50%',
           left: '50%',
           transform: 'translate(-50%, -50%)',
-          width: '600px',
-          height: '600px',
+          width: '500px',
+          height: '500px',
           borderRadius: '50%',
           background: 'radial-gradient(circle, rgba(255, 62, 24, 0.08) 0%, rgba(0, 0, 0, 0) 70%)',
-          filter: 'blur(80px)',
+          filter: 'blur(70px)',
           pointerEvents: 'none',
         }}
         aria-hidden="true"
       />
 
       <div className="container-fluid" style={{ textAlign: 'center' }}>
-        <div style={{ marginBottom: '2rem' }}>
+        <div style={{ marginBottom: '1.75rem' }}>
           <span className="eyebrow-badge">
             <span>05 // THE AXIOM</span>
           </span>
         </div>
 
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
           {/* Line 1 */}
           <div style={{ overflow: 'hidden', whiteSpace: 'nowrap' }}>
             <h2
@@ -143,7 +143,7 @@ export const Manifesto = () => {
               ref={line3Ref}
               className="display-manifesto"
               style={{
-                color: '#FF3E18',
+                color: 'var(--accent-primary)',
                 display: 'inline-block',
                 willChange: 'transform',
               }}

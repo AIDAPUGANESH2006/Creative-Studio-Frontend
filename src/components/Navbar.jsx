@@ -19,7 +19,7 @@ export const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 80) {
+      if (window.scrollY > 60) {
         setIsScrolled(true);
       } else {
         setIsScrolled(false);
@@ -60,7 +60,7 @@ export const Navbar = () => {
           left: 0,
           width: '100%',
           zIndex: 100,
-          padding: isScrolled ? '1rem 0' : 'clamp(1.2rem, 3vw, 2.5rem) 0',
+          padding: isScrolled ? '0.85rem 0' : 'clamp(1.2rem, 2.5vw, 2.2rem) 0',
           transition: 'padding 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
           pointerEvents: 'none',
         }}
@@ -72,8 +72,8 @@ export const Navbar = () => {
               alignItems: 'center',
               justifyContent: 'space-between',
               padding: isScrolled
-                ? '0.65rem 1.25rem'
-                : '0.4rem 0',
+                ? '0.55rem 1.2rem'
+                : '0.35rem 0',
               borderRadius: isScrolled ? '9999px' : '0',
               backgroundColor: isScrolled ? 'rgba(10, 10, 12, 0.75)' : 'transparent',
               backdropFilter: isScrolled ? 'blur(16px)' : 'none',
@@ -83,7 +83,7 @@ export const Navbar = () => {
               transition: 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
             }}
           >
-            {/* Logo */}
+            {/* Studio Logo with subtle pointer tilt */}
             <a
               href="#"
               ref={logoRef}
@@ -99,8 +99,8 @@ export const Navbar = () => {
             >
               <div
                 style={{
-                  width: 32,
-                  height: 32,
+                  width: 30,
+                  height: 30,
                   borderRadius: '50%',
                   border: '1.5px solid rgba(255, 255, 255, 0.3)',
                   display: 'flex',
@@ -111,8 +111,8 @@ export const Navbar = () => {
               >
                 <div
                   style={{
-                    width: 10,
-                    height: 10,
+                    width: 9,
+                    height: 9,
                     borderRadius: '50%',
                     backgroundColor: 'var(--accent-primary)',
                     boxShadow: '0 0 10px var(--accent-primary)',
@@ -122,7 +122,7 @@ export const Navbar = () => {
               <span
                 style={{
                   fontFamily: 'var(--font-display)',
-                  fontSize: '1.15rem',
+                  fontSize: '1.1rem',
                   fontWeight: 800,
                   letterSpacing: '0.04em',
                   color: '#F8F8F6',
@@ -137,7 +137,7 @@ export const Navbar = () => {
               style={{
                 display: 'flex',
                 alignItems: 'center',
-                gap: '2.5rem',
+                gap: '2.2rem',
               }}
               className="desktop-nav"
             >
@@ -148,7 +148,7 @@ export const Navbar = () => {
                   onClick={(e) => handleNavClick(e, link.href)}
                   style={{
                     fontFamily: 'var(--font-mono)',
-                    fontSize: '0.78rem',
+                    fontSize: '0.76rem',
                     textTransform: 'uppercase',
                     letterSpacing: '0.12em',
                     color: 'var(--text-secondary)',
@@ -186,7 +186,7 @@ export const Navbar = () => {
               ))}
             </nav>
 
-            {/* Desktop CTA & Mobile Toggle */}
+            {/* Desktop Magnetic CTA & Mobile Toggle */}
             <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
               <div ref={ctaMagneticRef} className="desktop-cta">
                 <a
@@ -201,11 +201,11 @@ export const Navbar = () => {
                   }}
                 >
                   <span>LET'S TALK</span>
-                  <ArrowUpRight size={14} />
+                  <ArrowUpRight size={14} data-magnetic-child="true" />
                 </a>
               </div>
 
-              {/* Mobile Menu Button */}
+              {/* Mobile Menu Toggle Button */}
               <button
                 onClick={() => setIsMobileMenuOpen(true)}
                 className="mobile-menu-btn"
@@ -229,7 +229,7 @@ export const Navbar = () => {
         </div>
       </header>
 
-      {/* Responsive Media Query Fix in CSS */}
+      {/* Responsive Styles */}
       <style>{`
         @media (max-width: 900px) {
           .desktop-nav, .desktop-cta {

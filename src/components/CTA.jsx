@@ -1,10 +1,10 @@
-import React, { useState, useRef } from 'react';
-import { ArrowUpRight, Copy, Check, Mail } from 'lucide-react';
+import React, { useState } from 'react';
+import { ArrowUpRight, Copy, Check } from 'lucide-react';
 import { useMagnetic } from '../hooks/useMagnetic';
 
 export const CTA = () => {
   const [copied, setCopied] = useState(false);
-  const magneticButtonRef = useMagnetic(0.3);
+  const magneticButtonRef = useMagnetic(0.28);
   const email = "hello@aetherstudio.design";
 
   const handleCopyEmail = () => {
@@ -20,8 +20,8 @@ export const CTA = () => {
       style={{
         position: 'relative',
         backgroundColor: '#080808',
-        paddingTop: 'clamp(5rem, 12vw, 11rem)',
-        paddingBottom: 'clamp(5rem, 12vw, 11rem)',
+        paddingTop: 'clamp(5rem, 11vw, 10rem)',
+        paddingBottom: 'clamp(5rem, 11vw, 10rem)',
         overflow: 'hidden',
       }}
       aria-label="Contact and Collaboration Inquiry"
@@ -30,22 +30,22 @@ export const CTA = () => {
       <div
         style={{
           position: 'absolute',
-          bottom: '-20%',
+          bottom: '-15%',
           left: '50%',
           transform: 'translateX(-50%)',
-          width: '80vw',
-          maxWidth: '900px',
-          height: '500px',
+          width: '75vw',
+          maxWidth: '850px',
+          height: '450px',
           borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(255, 62, 24, 0.15) 0%, rgba(8, 8, 8, 0) 70%)',
-          filter: 'blur(80px)',
+          background: 'radial-gradient(circle, rgba(255, 62, 24, 0.14) 0%, rgba(8, 8, 8, 0) 70%)',
+          filter: 'blur(75px)',
           pointerEvents: 'none',
         }}
         aria-hidden="true"
       />
 
       <div className="container" style={{ position: 'relative', zIndex: 10, textAlign: 'center' }}>
-        <div style={{ marginBottom: '1.5rem' }}>
+        <div style={{ marginBottom: '1.25rem' }}>
           <div className="eyebrow-badge">
             <span>INITIATE COLLABORATION</span>
           </div>
@@ -55,21 +55,21 @@ export const CTA = () => {
         <h2
           className="display-hero"
           style={{
-            maxWidth: '1200px',
-            margin: '0 auto 2.5rem',
+            maxWidth: '1100px',
+            margin: '0 auto 2rem',
             lineHeight: 0.95,
           }}
         >
           LET'S MAKE <br />
-          <span style={{ color: '#FF3E18' }}>SOMETHING</span> <br />
-          UNFORGETTABLE.
+          <span style={{ color: 'var(--accent-primary)' }}>SOMETHING</span> <br />
+          MEMORABLE.
         </h2>
 
         <p
           className="body-lead"
           style={{
-            maxWidth: '560px',
-            margin: '0 auto 3.5rem',
+            maxWidth: '540px',
+            margin: '0 auto 3rem',
             color: 'var(--text-secondary)',
           }}
         >
@@ -83,7 +83,7 @@ export const CTA = () => {
             flexWrap: 'wrap',
             justifyContent: 'center',
             alignItems: 'center',
-            gap: '1.5rem',
+            gap: '1.25rem',
           }}
         >
           <div ref={magneticButtonRef}>
@@ -91,12 +91,12 @@ export const CTA = () => {
               href={`mailto:${email}?subject=Project%20Inquiry%20%E2%80%94%20AETHER%20Studio`}
               className="btn-primary"
               style={{
-                padding: '1.3rem 2.8rem',
-                fontSize: '1rem',
+                padding: '1.15rem 2.5rem',
+                fontSize: '0.92rem',
               }}
             >
               <span>START A PROJECT</span>
-              <ArrowUpRight size={20} />
+              <ArrowUpRight size={19} data-magnetic-child="true" />
             </a>
           </div>
 
@@ -104,23 +104,23 @@ export const CTA = () => {
             onClick={handleCopyEmail}
             className="btn-pill-subtle"
             style={{
-              padding: '1.1rem 1.8rem',
-              fontSize: '0.85rem',
+              padding: '1rem 1.6rem',
+              fontSize: '0.82rem',
               cursor: 'pointer',
             }}
             aria-label="Copy studio email address"
           >
-            {copied ? <Check size={16} color="#FF3E18" /> : <Copy size={16} />}
+            {copied ? <Check size={15} color="#FF3E18" /> : <Copy size={15} />}
             <span>{copied ? 'EMAIL COPIED TO CLIPBOARD' : email}</span>
           </button>
         </div>
 
         {/* Studio Status Notification */}
-        <div style={{ marginTop: '4rem' }}>
+        <div style={{ marginTop: '3.5rem' }}>
           <span
             style={{
               fontFamily: 'var(--font-mono)',
-              fontSize: '0.78rem',
+              fontSize: '0.75rem',
               color: 'var(--text-muted)',
               letterSpacing: '0.08em',
               display: 'inline-flex',
